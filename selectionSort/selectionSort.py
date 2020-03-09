@@ -10,7 +10,7 @@ def desenhaGrafico(x, y, xl="Entradas", yl="Saídas"):
     ax.legend(bbox_to_anchor=(1, 1), bbox_transform=plt.gcf().transFigure)
     plt.ylabel(yl)
     plt.xlabel(xl)
-    fig.savefig('bubblesort.png')
+    fig.savefig('selectionSort.png')
 
 def geraLista(tam):
     lista = []
@@ -19,28 +19,32 @@ def geraLista(tam):
         if n not in lista: lista.append(n)
     return lista
 
-tamanhos_listas = [1000,10000,30000,60000]
+tamanhos_listas = [1000, 10000, 30000, 60000]
 tempos = []
 
-def bublesort(lista):
+def selectionSort(lista):
     agora = time.time()
     loop = 0
     n = len(lista)
-
+    #print(lista)
     for i in range(n):
-        for j in range(0, n-i-1):
-            loop+=1
-            if lista[j] > lista[j+1] :
-                lista[j], lista[j+1] = lista[j+1], lista[j]
+        atual = lista[i]
+        for j in range(i+1, n):
+            loop = loop + 1
+            if (atual > lista[j]):
+                aux = atual
+                atual = lista[j]
+                lista[j] = aux
+        lista[i] = atual
 
     depois = time.time()
     print("Loops feitos para a lista com", n, "numeros:", loop)
-
-    return depois-agora
+    #print(lista)
+    return depois - agora
 
 for tamanho in tamanhos_listas:
     lista = geraLista(tamanho)
-    tempo = bublesort(lista)
+    tempo = selectionSort(lista)
     tempos.append(tempo)
 
 desenhaGrafico(tamanhos_listas, tempos, "Tamanho", "Tempo")
