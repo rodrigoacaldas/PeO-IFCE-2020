@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import random
 import time
 
-def desenhaGrafico(x, y, xl="Entradas", yl="Saídas",name="selectionSort"):
+def desenhaGrafico(x, y, xl="Entradas", yl="Saídas",name="quickSort"):
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111)
     ax.plot(x, y, label="Melhor Tempo")
