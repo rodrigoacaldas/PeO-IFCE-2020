@@ -49,7 +49,7 @@ for tamanho in tamanhos_listas:
     agora = time.time()
     ordenada = radixSort(lista)
     depois = time.time()
-    print(ordenada)
+    #print(ordenada)
     tempos.append(depois - agora)
 
 
